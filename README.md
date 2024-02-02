@@ -24,5 +24,5 @@ ___
 - As a user, I want to be able to add an expense or earning to my account
 - As a user, I want to be able to view my list of expenses or earnings separately
 - As a user, I want to be able to see if I am approaching or have surpassed my budget with the addition of an item to my account
-- As a user, I want to see how much money I still need to meet my savings goal
+- As a user, I want to be able to see how much money I still need to meet my savings goal
 - As a user, I want to be able to specify a name, longer description, budget category, amount, and date of an item being added to my account
