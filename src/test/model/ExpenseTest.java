@@ -11,13 +11,40 @@ public class ExpenseTest {
 
     @BeforeEach
     public void setup() {
-        expense = new Expense(100, "Bought milk","grocery");
+        expense = new Expense(10.99, "Bought milk","2 cartons", "2024-02-15", "grocery");
     }
 
     @Test
     public void testConstructor() {
-        assertEquals(100, expense.getAmount());
+        assertEquals(10.99, expense.getAmount());
         assertEquals("Bought milk", expense.getName());
+        assertEquals("2 cartons", expense.getNote());
         assertEquals("grocery", expense.getCategory());
+        assertEquals("2024-02-15", expense.getDate());
+    }
+
+    @Test
+    public void testGetAmount() {
+        assertEquals(10.99, expense.getAmount());
+    }
+
+    @Test
+    public void testGetName() {
+        assertEquals("Bought milk", expense.getName());
+    }
+
+    @Test
+    public void testGetNote() {
+        assertEquals("2 cartons", expense.getNote());
+    }
+
+    @Test
+    public void testGetCategory() {
+        assertEquals("grocery", expense.getCategory());
+    }
+
+    @Test
+    public void testGetDate() {
+        assertEquals("2024-02-15", expense.getDate());
     }
 }

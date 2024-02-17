@@ -11,12 +11,34 @@ public class EarningTest {
 
     @BeforeEach
     public void setup() {
-        earning = new Earning(1000, "salary");
+        earning = new Earning(1000, "salary", "my monthly salary", "2024-02-15");
     }
 
     @Test
     public void testConstructor() {
        assertEquals(1000, earning.getAmount());
        assertEquals("salary", earning.getName());
+       assertEquals("my monthly salary", earning.getNote());
+       assertEquals("2024-02-15", earning.getDate());
+    }
+
+    @Test
+    public void testGetAmount() {
+        assertEquals(1000, earning.getAmount());
+    }
+
+    @Test
+    public void testGetNote() {
+        assertEquals("my monthly salary", earning.getNote());
+    }
+
+    @Test
+    public void testGetName() {
+        assertEquals("salary", earning.getName());
+    }
+
+    @Test
+    public void testGetDate() {
+        assertEquals("2024-02-15", earning.getDate());
     }
 }
