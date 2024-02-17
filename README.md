@@ -1,4 +1,4 @@
-# My Personal Project: Personal Finance Tracker
+# Personal Finance Tracker
 ___
 ## Background
 ___
