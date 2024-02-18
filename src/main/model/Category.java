@@ -27,6 +27,6 @@ public class Category {
     }
 
     public void setTotal(double total) {
-        this.total = total;
+        this.total += total;
     }
 }

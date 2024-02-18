@@ -122,7 +122,7 @@ public class AccountTest {
         // checking values of each category's list and total
         assertEquals(2, account.getExpensesByCategory().get("Food & Grocery").getExpenseList().size());
         assertEquals(expense1, account.getExpensesByCategory().get("Food & Grocery").getExpenseList().get(0));
-        assertEquals(expense2, account.getExpensesByCategory().get("Food & Grocery").getExpenseList().get(0));
+        assertEquals(expense2, account.getExpensesByCategory().get("Food & Grocery").getExpenseList().get(1));
         assertEquals(1.99 + 9.97, account.getExpensesByCategory().get("Food & Grocery").getTotal());
 
         assertEquals(2, account.getExpensesByCategory().get("Entertainment & Leisure").getExpenseList().size());
@@ -178,7 +178,7 @@ public class AccountTest {
         account.addToCategory(expense2);
         assertEquals(2, account.getExpensesByCategory().get("Food & Grocery").getExpenseList().size());
         assertEquals(expense1, account.getExpensesByCategory().get("Food & Grocery").getExpenseList().get(0));
-        assertEquals(expense2, account.getExpensesByCategory().get("Food & Grocery").getExpenseList().get(0));
+        assertEquals(expense2, account.getExpensesByCategory().get("Food & Grocery").getExpenseList().get(1));
         assertEquals(1.99 + 9.97, account.getExpensesByCategory().get("Food & Grocery").getTotal());
         assertTrue(account.getExpensesByCategory().get("Other").getExpenseList().isEmpty());
         assertEquals(0, account.getExpensesByCategory().get("Other").getTotal());

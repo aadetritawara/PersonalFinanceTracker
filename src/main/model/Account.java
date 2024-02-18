@@ -45,14 +45,19 @@ public class Account {
     // EFFECT: records expense in allExpensesList and appropriate category's expenses list in expensesByCategory.
     // Also updates numerical values of balance, totalExpenses, & expensesByCategory's total field with expense's amount
     public void addExpense(Expense expense) {
-        //stub
+        addToCategory(expense);
+        allExpensesList.add(expense);
+        updateBalance(expense);
+        totalExpenses += expense.getAmount();
     }
 
 
     // MODIFIES: this
     // EFFECT: records earning in allEarningsList and the updates balance and totalEarnings values.
     public void addEarning(Earning earning) {
-        //stub
+        allEarningsList.add(earning);
+        totalEarnings += earning.getAmount();
+        updateBalance(earning);
     }
 
     // MODIFIES: balance
@@ -69,7 +74,13 @@ public class Account {
     // MODIFIES: expensesByCategory
     // EFFECT: adds the expense to appropriate category and updates appropriate category by the expense's amount
     public void addToCategory(Expense expense) {
-        //stub
+        for (String key : expensesByCategory.keySet()) {
+            Category value = expensesByCategory.get(key);
+            if (key.equals(expense.getCategory())) {
+                value.getExpenseList().add(expense);
+                value.setTotal(expense.getAmount());
+            }
+        }
     }
 
     public HashMap<String, Category> getExpensesByCategory() {
