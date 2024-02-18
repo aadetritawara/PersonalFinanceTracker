@@ -65,9 +65,9 @@ public class Account {
     // or if it is an expense, decreasing the balance by expense amount
     public void updateBalance(ItemToBeLogged item) {
         if (item instanceof Earning) {
-            this.balance = balance += item.getAmount();
+            this.balance += item.getAmount();
         } else {
-            this.balance = balance -= item.getAmount();
+            this.balance -= item.getAmount();
         }
     }
 

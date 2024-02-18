@@ -8,6 +8,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountTest {
+    // tests for account class in model package
 
     Account account;
     Expense expense1;
