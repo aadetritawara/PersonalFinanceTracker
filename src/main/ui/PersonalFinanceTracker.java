@@ -22,6 +22,7 @@ public class PersonalFinanceTracker {
         runTracker();
     }
 
+
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runTracker() {
@@ -44,6 +45,9 @@ public class PersonalFinanceTracker {
 
     }
 
+
+    // MODIFIES: this
+    // EFFECTS: precesses the command entered by the user to call appropriate method
     public void processCommand(String command) {
         if (command.equals("1")) {
             newExpense();
@@ -56,6 +60,7 @@ public class PersonalFinanceTracker {
         }
     }
 
+
     // EFFECTS: displays a menu for user to choose from
     private void displayMenu() {
         System.out.println("\nSelect from:");
@@ -65,7 +70,7 @@ public class PersonalFinanceTracker {
         System.out.println("\tq -> quit");
     }
 
-    // REQUIRES: a valid input date
+
     // MODIFIES: this
     // EFFECTS: adds an expense to the account
     public void newExpense() {
@@ -91,6 +96,7 @@ public class PersonalFinanceTracker {
         account.addExpense(expense);
         System.out.println("Expense added to account.\nReturning to main menu.\n");
     }
+
 
     // EFFECT: checks if user inputted value is a valid double and returns the valid value
     // once it is obtained from the user
@@ -131,6 +137,7 @@ public class PersonalFinanceTracker {
         return answer;
     }
 
+
     // EFFECTS: gets the category chose based on the user's answer
     public String getCategoryFromAnswerChoice(String answer) {
         if (answer.equals("1")) {
@@ -148,6 +155,7 @@ public class PersonalFinanceTracker {
         }
     }
 
+
     // EFFECTS: displays a list of categories to choose from
     public void displayCategories() {
         System.out.println("Choose a category: ");
@@ -158,12 +166,12 @@ public class PersonalFinanceTracker {
         System.out.println("\t5 -> Other");
     }
 
+
     // MODIFIES: this
     // EFFECTS: adds an earning to the account
     public void newEarning() {
 
         double doubleAmount = getAmount();
-
         System.out.println("Please enter a name for the expense: ");
         String name = scanner.nextLine();
         System.out.println("Add a longer note if necessary: ");
