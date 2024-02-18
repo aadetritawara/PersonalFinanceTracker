@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class Account {
-    // This class represents an account to which expenses, earnings, and savings may be added
+    // This class represents an account to which expenses and earnings may be added.
 
     private HashMap<String, Category> expensesByCategory;
     private ArrayList<Expense> allExpensesList;
