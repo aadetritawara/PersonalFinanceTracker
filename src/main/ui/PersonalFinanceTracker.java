@@ -32,15 +32,13 @@ public class PersonalFinanceTracker {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds an expense to the account and displays stats:
-    // expense category's updated total & list
+    // EFFECTS: adds an expense to the account
     public void newExpense() {
         // stub
     }
 
     // MODIFIES: this
-    // EFFECTS: adds an earning to the account and displays stats:
-    // updated total earning
+    // EFFECTS: adds an earning to the account
     public void newEarning() {
         // stub
     }
@@ -48,8 +46,22 @@ public class PersonalFinanceTracker {
     // MODIFIES: this
     // EFFECTS: displays stats:
     // balance, expense total, earning total, expense list, earning list
-    public void displayStats() {
+    public void displayGeneralStats() {
         // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: displays total expenses by category
+    public void displaySpendingByCategory() {
+        // stub
+    }
+
+    // MODIFIES: this
+    // EFFECTS: displays both overall spending and spending broken down by category.
+    // Also shows separate lists of expenses and earnings made by user.
+    public void viewAccountStats() {
+        displayGeneralStats();
+        displaySpendingByCategory();
     }
 
 
