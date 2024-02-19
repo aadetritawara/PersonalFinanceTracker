@@ -10,7 +10,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-
+// The code structure found in the Teller App helped me write this class:
+// source: https://github.students.cs.ubc.ca/CPSC210/TellerApp
 public class PersonalFinanceTracker {
     // represents a personal finance tracker
 
