@@ -25,6 +25,8 @@ ___
 - As a user, I want to be able to specify a name, longer description, budget category, amount, and date of an expense being added to my account
 - As a user, I want to be able to see my total spending per expense category
 - As a user, I want to be able to see my total account balance
+- As a user, when I select quit from the menu, I want to be reminded to save the current state of my personal finance tracker to file and have the option to do so or not.
+- As a user, when I start the application, I want to be given the option to load my personal finance tracker from file.
 
 ---
 Resources Used:
