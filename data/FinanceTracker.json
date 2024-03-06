@@ -1,0 +1,24 @@
+{
+    "all expenses list": [
+        {
+            "date": "01-05-2024",
+            "note": "math",
+            "amount": 100,
+            "name": "textbook",
+            "category": "Other"
+        },
+        {
+            "date": "01-02-2024",
+            "note": "2 cartons",
+            "amount": 10.99,
+            "name": "milk",
+            "category": "Food & Grocery"
+        }
+    ],
+    "all earnings list": [{
+        "date": "01-01-2024",
+        "note": "january",
+        "amount": 2000,
+        "name": "salary"
+    }]
+}
