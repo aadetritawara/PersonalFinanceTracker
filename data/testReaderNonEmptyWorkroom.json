@@ -1,0 +1,39 @@
+{
+  "all expenses list": [
+    {
+      "date": "01-15-2024",
+      "note": "2 cartons",
+      "amount": 10.99,
+      "name": "milk",
+      "category": "Food & Grocery"
+    },
+    {
+      "date": "01-02-2024",
+      "note": "lunch at chipotle",
+      "amount": 12.99,
+      "name": "burrito",
+      "category": "Food & Grocery"
+    },
+    {
+      "date": "01-05-2024",
+      "note": "first biweekly payment",
+      "amount": 10.99,
+      "name": "gym membership",
+      "category": "Entertainment & Leisure"
+    }
+  ],
+  "all earnings list": [
+    {
+      "date": "01-01-2024",
+      "note": "january salary",
+      "amount": 2500,
+      "name": "salary"
+    },
+    {
+      "date": "01-07-2024",
+      "note": "",
+      "amount": 30,
+      "name": "paid back by Irene"
+    }
+  ]
+}
