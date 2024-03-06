@@ -37,7 +37,7 @@ public class JsonReaderTest {
 
     @Test
     void testReaderNonEmptyAccount() {
-        JsonReader reader = new JsonReader("./data/testReaderNonEmptyWorkroom.json");
+        JsonReader reader = new JsonReader("./data/testReaderNonEmptyAccount.json");
         try {
             Account acc = reader.read();
             assertEquals(2530 - (2*10.99) - 12.99, acc.getBalance());
