@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Set;
 
 public class Account {
     // This class represents an account to which expenses and earnings may be added.
@@ -105,5 +109,39 @@ public class Account {
 
     public double getTotalExpenses() {
         return totalExpenses;
+    }
+
+    // EFFECTS: returns this as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+
+        JSONArray allExpenses = makeJsonExpenseArray(allExpensesList);
+        json.put("all expenses list", allExpenses);
+
+        JSONArray allEarnings = makeJsonEarningArray(allEarningsList);
+        json.put("all earnings list", allEarnings);
+
+        return json;
+
+    }
+
+    // EFFECTS: returns the Json array associated with the inputted list of type Earning
+    private JSONArray makeJsonEarningArray(ArrayList<Earning> list) {
+        JSONArray j = new JSONArray();
+        for (Earning i: list) {
+            JSONObject expense = i.earningToJson();
+            j.put(expense);
+        }
+        return j;
+    }
+
+    // EFFECTS: returns the Json array associated with the inputted list of type Expense
+    private JSONArray makeJsonExpenseArray(ArrayList<Expense> list) {
+        JSONArray j = new JSONArray();
+        for (Expense i: list) {
+            JSONObject expense = i.expenseToJson();
+            j.put(expense);
+        }
+        return j;
     }
 }

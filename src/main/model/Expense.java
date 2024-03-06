@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class Expense extends ItemToBeLogged {
     // this class represents a single expense
 
@@ -16,4 +19,10 @@ public class Expense extends ItemToBeLogged {
         return category;
     }
 
+    // EFFECTS: turns this into a Json object
+    public JSONObject expenseToJson() {
+        JSONObject j = super.itemToJson();
+        j.put("category", getCategory());
+        return j;
+    }
 }

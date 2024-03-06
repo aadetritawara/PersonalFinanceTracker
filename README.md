@@ -34,3 +34,4 @@ Resources Used:
 - How to get and validate format of user input: https://www.youtube.com/watch?v=bI7kQq9cjmQ
 - Parsing dates: https://docs.oracle.com/javase/tutorial/datetime/iso/format.html
 - How to format console output into columns: https://stackoverflow.com/questions/26576909/how-to-format-string-output-so-that-columns-are-evenly-centered
+- Understanding how writing to a JSON file works: https://www.youtube.com/watch?v=-qEpxIARKxE

@@ -3,7 +3,11 @@ package ui;
 import model.Account;
 import model.Earning;
 import model.Expense;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -15,11 +19,17 @@ import java.util.Scanner;
 public class PersonalFinanceTracker {
     // represents a personal finance tracker
 
+    private static final String JSON_STORE = "./data/FinanceTracker.json";
+    private JsonReader jsonReader;
+    private JsonWriter jsonWriter;
+
     private Scanner scanner = new Scanner(System.in);
     private Account account = new Account();
 
     // EFFECTS: runs the personal finance tracker application
-    public PersonalFinanceTracker() {
+    public PersonalFinanceTracker() throws FileNotFoundException {
+        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE);
         runTracker();
     }
 
@@ -28,22 +38,56 @@ public class PersonalFinanceTracker {
     // EFFECTS: processes user input
     private void runTracker() {
         boolean keepGoing = true;
-        String command;
+
+        loading();
 
         while (keepGoing) {
             displayMenu();
-            command = scanner.nextLine();
-            command = command.toLowerCase();
+            String command = scanner.nextLine().toLowerCase();
 
             if (command.equals("q")) {
+                saving();
                 keepGoing = false;
             } else {
                 processCommand(command);
             }
         }
-
         System.out.println("\nGoodbye!");
+    }
 
+    // EFFECTS: displays menu and prompts user to choose if they want to load from file.
+    // loads from file if they choose yes.
+    private void loading() {
+        displayLoadingMenu();
+        String loadCommand = scanner.nextLine().toLowerCase();
+        if (loadCommand.equals("y")) {
+            loadAccount();
+        }
+    }
+
+    // EFFECTS: displays menu and prompts user to choose to save if they wish.
+    // saves to file if they choose yes.
+    private void saving() {
+        displaySavingMenu();
+        String saveCommand = scanner.nextLine().toLowerCase();
+        if (saveCommand.equals("y")) {
+            saveAccount();
+        }
+    }
+
+    // EFFECTS: displays a menu for user to choose from
+    private void displayLoadingMenu() {
+        System.out.println("Do you want to load account information from file?");
+        System.out.println("\ty -> yes");
+        System.out.println("\tn -> no");
+    }
+
+
+    // EFFECTS: displays a menu for user to choose from
+    private void displaySavingMenu() {
+        System.out.println("Do you want to save account information to file?");
+        System.out.println("\ty -> yes");
+        System.out.println("\tn -> no");
     }
 
 
@@ -54,7 +98,7 @@ public class PersonalFinanceTracker {
             newExpense();
         } else if (command.equals("2")) {
             newEarning();
-        } else if (command.equals("s")) {
+        } else if (command.equals("v")) {
             viewAccountStats();
         } else {
             System.out.println("Please enter a valid item from the menu: ");
@@ -67,7 +111,7 @@ public class PersonalFinanceTracker {
         System.out.println("\nSelect from:");
         System.out.println("\t1 -> new expense");
         System.out.println("\t2 -> new earning");
-        System.out.println("\ts -> view account stats");
+        System.out.println("\tv -> view account stats");
         System.out.println("\tq -> quit");
     }
 
@@ -228,4 +272,26 @@ public class PersonalFinanceTracker {
     }
 
 
+    // EFFECTS: saves the account to file
+    private void saveAccount() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(account);
+            jsonWriter.close();
+            System.out.println("Saved " + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads account from file
+    private void loadAccount() {
+        try {
+            account = jsonReader.read();
+            System.out.println("Loaded " + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
 }

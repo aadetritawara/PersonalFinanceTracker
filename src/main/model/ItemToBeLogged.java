@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 public abstract class ItemToBeLogged {
 
     private double amount;
@@ -31,4 +33,16 @@ public abstract class ItemToBeLogged {
     public String getDate() {
         return date;
     }
+
+    // EFFECTS: turns this into a Json object
+    protected JSONObject itemToJson() {
+
+        JSONObject j = new JSONObject();
+        j.put("amount", getAmount());
+        j.put("name", getName());
+        j.put("note", getNote());
+        j.put("date", getDate());
+        return j;
+    }
+
 }

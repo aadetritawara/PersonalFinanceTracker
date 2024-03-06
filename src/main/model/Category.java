@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class Category {
@@ -26,4 +29,5 @@ public class Category {
     public void setTotal(double total) {
         this.total += total;
     }
+
 }
