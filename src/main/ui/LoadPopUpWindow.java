@@ -10,6 +10,7 @@ public class LoadPopUpWindow extends JFrame implements ActionListener {
     JFrame frame = new JFrame();
     JButton load = new JButton("Yes");
     JButton doNotLoad = new JButton("No");
+    Boolean answer;
 
     // EFFECT: pop up window asks user if they want to load previous session data
     public LoadPopUpWindow() {
@@ -47,12 +48,11 @@ public class LoadPopUpWindow extends JFrame implements ActionListener {
 
         if (e.getSource() == load) {
             frame.dispose();
-            GuiPersonalFinanceTracker yesLoad = new GuiPersonalFinanceTracker();
-            yesLoad.load();
+            GuiPersonalFinanceTracker fin = new GuiPersonalFinanceTracker(true);
         } else if (e.getSource() == doNotLoad) {
             frame.dispose();
-            new GuiPersonalFinanceTracker();
+            GuiPersonalFinanceTracker fin = new GuiPersonalFinanceTracker(false);
         }
-
     }
+
 }

@@ -1,6 +1,8 @@
 package ui;
 
 import model.Account;
+import model.Earning;
+import model.Expense;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -24,18 +26,25 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
 
     private ArrayList<ImageIcon> icons = new ArrayList<>();
 
-    private JPanel center;
+    private JButton earningButton;
+    private JButton quitButton;
+    private JButton expenseButton;
+    private JPanel center = new JPanel();
     private Account acc;
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
 
 
     // EFFECT: creates a graphical interface for the personal finance tracker application
-    public GuiPersonalFinanceTracker() {
+    public GuiPersonalFinanceTracker(Boolean b) {
 
         jsonReader = new JsonReader("./data/FinanceTracker.json");
         jsonWriter = new JsonWriter("./data/FinanceTracker.json");
         acc = new Account();
+
+        if (b == true) {
+            load();
+        }
 
         this.setTitle("Personal Finance Tracker");
         this.setResizable(false);
@@ -44,7 +53,6 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         this.getContentPane().setBackground(new Color(18, 18, 18));
         this. setLocationRelativeTo(null);
         this.getContentPane().setLayout(new BorderLayout());
-        center = new JPanel();
         initializeGuiComponents();
         this.setVisible(true);
     }
@@ -68,10 +76,11 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         JPanel container = new JPanel();
         container.setBackground(new Color(18, 18, 18));
 
-        JButton b = new JButton("Quit");
-        b.setForeground(new Color(18, 18, 18));
+        quitButton = new JButton("Quit");
+        quitButton.setForeground(new Color(18, 18, 18));
+        quitButton.addActionListener(this);
 
-        container.add(b);
+        container.add(quitButton);
 
         return container;
     }
@@ -190,12 +199,13 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
 
         JLabel label = new JLabel(earning);
 
-        JButton b = new JButton("Add New Earning");
-        b.setForeground(new Color(18, 18, 18));
-        b.setBackground(new Color(89, 70, 178));
+        earningButton = new JButton("Add New Earning");
+        earningButton.setForeground(new Color(18, 18, 18));
+        earningButton.setBackground(new Color(89, 70, 178));
+        earningButton.addActionListener(this);
 
         container.add(label);
-        container.add(b);
+        container.add(earningButton);
 
         return container;
     }
@@ -207,19 +217,38 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
 
         JLabel label = new JLabel(expense);
 
-        JButton b = new JButton("Add New Expense");
-        b.setForeground(new Color(18, 18, 18));
-        b.setBackground(new Color(89, 70, 178));
+        expenseButton = new JButton("Add New Expense");
+        expenseButton.setForeground(new Color(18, 18, 18));
+        expenseButton.setBackground(new Color(89, 70, 178));
+        expenseButton.addActionListener(this);
 
         container.add(label);
-        container.add(b);
+        container.add(expenseButton);
 
         return container;
     }
 
     @Override
+    // EFFECT: opens appropriate windows based on the button clicked : earning/expense/quit
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == earningButton()) {
+            EarningPopUpWindow epuw = new EarningPopUpWindow();
+            ArrayList<String> values = epuw.returnValues();
+            double input1 = Double.parseDouble(values.get(0));
+            Earning earning = new Earning(input1, values.get(1), values.get(2), values.get(3));
+            acc.addEarning(earning);
 
+        } else if (e.getSource() == expenseButton()) {
+            ExpensePopUpWindow epuw = new ExpensePopUpWindow();
+            ArrayList<String> values = epuw.returnValues();
+            double input1 = Double.parseDouble(values.get(0));
+            Expense expense = new Expense(input1, values.get(1), values.get(2), values.get(3), values.get(4));
+            acc.addExpense(expense);
+
+        } else if (e.getSource() == quitButton()) {
+            new SavePopUpWindow();
+            dispose();
+        }
     }
 
 
