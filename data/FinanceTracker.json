@@ -1,24 +1,32 @@
 {
     "all expenses list": [
         {
-            "date": "01-05-2024",
-            "note": "math",
-            "amount": 100,
-            "name": "textbook",
-            "category": "Other"
+            "date": "01-01-2020",
+            "note": "djfl",
+            "amount": 23,
+            "name": "sldkj",
+            "category": "Clothing"
         },
         {
-            "date": "01-02-2024",
-            "note": "2 cartons",
-            "amount": 10.99,
-            "name": "milk",
-            "category": "Food & Grocery"
+            "date": "01-10-2020",
+            "note": "sdlkj dlkj",
+            "amount": 32,
+            "name": "sdlk",
+            "category": "Clothing"
         }
     ],
-    "all earnings list": [{
-        "date": "01-01-2024",
-        "note": "january",
-        "amount": 2000,
-        "name": "salary"
-    }]
+    "all earnings list": [
+        {
+            "date": "01-10-2929",
+            "note": "sdlkj dl",
+            "amount": 23,
+            "name": "sldkfj"
+        },
+        {
+            "date": "01-01-2020",
+            "note": "dlk ",
+            "amount": 223,
+            "name": "sdk"
+        }
+    ]
 }
