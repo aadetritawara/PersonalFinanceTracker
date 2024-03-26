@@ -35,3 +35,4 @@ Resources Used:
 - Parsing dates: https://docs.oracle.com/javase/tutorial/datetime/iso/format.html
 - How to format console output into columns: https://stackoverflow.com/questions/26576909/how-to-format-string-output-so-that-columns-are-evenly-centered
 - Understanding how writing to a JSON file works: https://www.youtube.com/watch?v=-qEpxIARKxE
+- How to use Swing Graphics: https://www.youtube.com/watch?v=Kmgo00avvEw&t=1466s
