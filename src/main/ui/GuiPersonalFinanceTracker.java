@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -33,7 +34,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
     private JPanel rightContainer;
-
+    private DecimalFormat df = new DecimalFormat("#0.00");
 
 
     // EFFECT: creates a graphical interface for the personal finance tracker application
@@ -158,7 +159,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
 
         for (String c : categories) {
             JLabel secondRow = new JLabel();
-            secondRow.setText("$ " + acc.getExpensesByCategory().get(c).getTotal());
+            secondRow.setText("$ " + df.format(acc.getExpensesByCategory().get(c).getTotal()));
             secondRow.setForeground(new Color(211, 211, 211));
             container.add(secondRow);
         }
@@ -181,7 +182,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
 
         for (int i = 0; i < 3; i++) {
             JLabel amount = new JLabel();
-            amount.setText("$" + amounts.get(i));
+            amount.setText("$" + df.format(amounts.get(i)));
             amount.setHorizontalAlignment(SwingConstants.CENTER);
 
             JLabel title = accountSummaryLabelTitles.get(i);
