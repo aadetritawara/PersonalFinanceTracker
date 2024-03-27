@@ -2,7 +2,6 @@ package ui;
 
 import model.Account;
 import model.Earning;
-import model.Expense;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -236,11 +235,16 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
             acc.addEarning(earning);
 
         } else if (e.getSource() == expenseButton) {
-            ExpensePopUpWindow epuw = new ExpensePopUpWindow();
-            ArrayList<String> values = epuw.returnValues();
-            double input1 = Double.parseDouble(values.get(0));
-            Expense expense = new Expense(input1, values.get(1), values.get(2), values.get(3), values.get(4));
-            acc.addExpense(expense);
+            new ExpensePopUpWindow(this);
+//            ArrayList<String> values = epuw.returnValues();
+//            // -----------testing-------- \\
+//            for (String v : values) {
+//                System.out.println(v);
+//            }
+//            // -----------testing-------- \\
+//            double input1 = Double.parseDouble(values.get(0));
+//            Expense expense = new Expense(input1, values.get(1), values.get(2), values.get(3), values.get(4));
+//            acc.addExpense(expense);
 
         } else if (e.getSource() == quitButton) {
             new SavePopUpWindow();
@@ -255,5 +259,10 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
             System.out.println("Unable to read from file");
         }
     }
+
+    public Account getAccount() {
+        return this.acc;
+    }
+
 
 }
