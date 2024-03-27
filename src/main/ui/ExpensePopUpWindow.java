@@ -1,6 +1,7 @@
 package ui;
 
 import model.Expense;
+import model.ItemToBeLogged;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,7 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
 
     private GuiPersonalFinanceTracker parentClass;
     private JButton submit;
+    private JButton cancel;
     private JTextField amount = new JTextField();
     private JTextField name = new JTextField();
     private JTextField note = new JTextField();
@@ -35,8 +37,10 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
         this.getContentPane().setBackground(new Color(18, 18, 18));
         this.setLocationRelativeTo(null);
 
+        cancel = new JButton("Cancel");
         submit = new JButton("Submit Expense");
         submit.addActionListener(this);
+        cancel.addActionListener(this);
 
         this.setLayout(new GridLayout(8, 2));
 
@@ -75,6 +79,7 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
         }
 
         add(submit);
+        add(cancel);
     }
 
     @Override
@@ -97,6 +102,9 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
 
             Expense expense = new Expense(input1, input2, input3, input4, input5);
             parentClass.getAccount().addExpense(expense);
+            parentClass.update(expense);
+            this.dispose();
+        } else if (e.getSource() == cancel) {
             this.dispose();
         }
     }

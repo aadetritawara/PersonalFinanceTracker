@@ -1,6 +1,7 @@
 package ui;
 
 import model.Earning;
+import model.ItemToBeLogged;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,7 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
 
     private GuiPersonalFinanceTracker parentClass;
     private JButton submit;
+    private JButton cancel;
     private JTextField name = new JTextField();
     private JTextField note = new JTextField();
     private JTextField date = new JTextField();
@@ -26,10 +28,12 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
         this.getContentPane().setBackground(new Color(18, 18, 18));
         this.setLocationRelativeTo(null);
 
+        cancel = new JButton("Cancel");
         submit = new JButton("Submit Expense");
         submit.addActionListener(this);
+        cancel.addActionListener(this);
 
-        this.setLayout(new GridLayout(5, 2));
+        this.setLayout(new GridLayout(6, 2));
 
         formatFrame();
 
@@ -53,7 +57,10 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
             add(text);
             add(inputs.get(i));
         }
+        add(new JLabel());
+        add(new JLabel());
         add(submit);
+        add(cancel);
     }
 
     @Override
@@ -66,6 +73,9 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
 
             Earning earning = new Earning(input1, input2, input3, input4);
             parentClass.getAccount().addEarning(earning);
+            parentClass.update(earning);
+            this.dispose();
+        } else if (e.getSource() == cancel) {
             this.dispose();
         }
     }

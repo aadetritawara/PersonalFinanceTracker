@@ -1,9 +1,58 @@
 {
-    "all expenses list": [],
-    "all earnings list": [{
-        "date": "03-01-2024",
-        "note": "",
-        "amount": 1200,
-        "name": "march salary"
-    }]
+    "all expenses list": [
+        {
+            "date": "01-01-2024",
+            "note": "2 cartons",
+            "amount": 12.99,
+            "name": "milk",
+            "category": "Food & Grocery"
+        },
+        {
+            "date": "01-01-2024",
+            "note": "sldk",
+            "amount": 12,
+            "name": "a;sldk",
+            "category": "Clothing"
+        },
+        {
+            "date": "09-04-2023",
+            "note": "",
+            "amount": 100,
+            "name": "adf",
+            "category": "Clothing"
+        },
+        {
+            "date": "09-09-2023",
+            "note": "l;kj;lk",
+            "amount": 800,
+            "name": "kjh;lkj",
+            "category": "Entertainment & Leisure"
+        }
+    ],
+    "all earnings list": [
+        {
+            "date": "03-01-2024",
+            "note": "",
+            "amount": 1200,
+            "name": "march salary"
+        },
+        {
+            "date": "02-01-2024",
+            "note": "",
+            "amount": 1200,
+            "name": "Februrary Salary"
+        },
+        {
+            "date": "02-02-2024",
+            "note": "irene",
+            "amount": 50,
+            "name": "e-transfer"
+        },
+        {
+            "date": "09-09-2023",
+            "note": "jkhlkh",
+            "amount": 100,
+            "name": "gk"
+        }
+    ]
 }

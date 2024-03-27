@@ -2,6 +2,7 @@ package ui;
 
 import model.Account;
 import model.Earning;
+import model.ItemToBeLogged;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -28,10 +29,11 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
     private JButton earningButton = new JButton("Add New Earning");
     private JButton quitButton = new JButton("Quit");
     private JButton expenseButton = new JButton("Add New Expense");
-    private JPanel center = new JPanel();
     private Account acc;
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
+    private JPanel rightContainer;
+
 
 
     // EFFECT: creates a graphical interface for the personal finance tracker application
@@ -56,6 +58,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         this.setVisible(true);
     }
 
+    // MODIFIES: this
     // EFFECT: adds components to an empty JFrame in their correct area
     private void initializeGuiComponents() {
         add(setNorth(), BorderLayout.NORTH); // top
@@ -69,7 +72,9 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         container.add(quitButton());
 
         add(container, BorderLayout.EAST); // right of screen
+//        add(createCenter(), BorderLayout.NORTH);
     }
+
 
     private Component quitButton() {
         JPanel container = new JPanel();
@@ -97,7 +102,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
     }
 
     private Component rightContainer() {
-        JPanel rightContainer = new JPanel();
+        rightContainer = new JPanel();
         rightContainer.setBackground(new Color(18, 18, 18));
         rightContainer.setLayout(new GridLayout(2,1));
 
@@ -167,19 +172,19 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         leftContainer.setBackground(new Color(18, 18, 18));
         leftContainer.setLayout(new GridLayout(3,2));
 
-        ArrayList<String> titles = new ArrayList<>(Arrays.asList("Balance", "Total Expenses", "Total Earnings"));
         ArrayList<Double> amounts = new ArrayList<>(Arrays.asList(acc.getBalance(), acc.getTotalExpenses(),
                 acc.getTotalEarnings()));
 
-        for (int i = 0; i < 3; i++) {
-            JLabel title = new JLabel();
-            title.setText(titles.get(i));
-            title.setHorizontalAlignment(SwingConstants.CENTER);
+        ArrayList<JLabel> accountSummaryLabelTitles = new ArrayList<>(Arrays.asList(new JLabel("Balance",
+                        SwingConstants.CENTER), new JLabel("Total Expenses", SwingConstants.CENTER),
+                new JLabel("Total Earnings", SwingConstants.CENTER)));
 
+        for (int i = 0; i < 3; i++) {
             JLabel amount = new JLabel();
             amount.setText("$" + amounts.get(i));
             amount.setHorizontalAlignment(SwingConstants.CENTER);
 
+            JLabel title = accountSummaryLabelTitles.get(i);
             title.setForeground(new Color(211, 211, 211));
             amount.setForeground(new Color(211, 211, 211));
 
@@ -237,6 +242,8 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         }
     }
 
+    // EFFECTS: reads data already in the file while updating all necessary features of the GUI
+    // (balance, spending by category, & JTable listing earnings/expenses)
     public void load() {
         try {
             acc = jsonReader.read();
@@ -251,5 +258,13 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
 
     public JsonWriter getJsonWriter() {
         return this.jsonWriter;
+    }
+
+    public void update(ItemToBeLogged item) {
+
+        rightContainer = null;
+        icons.clear();
+        initializeGuiComponents();
+        this.setVisible(true);
     }
 }
