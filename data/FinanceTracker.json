@@ -13,6 +13,13 @@
             "amount": 32,
             "name": "sdlk",
             "category": "Clothing"
+        },
+        {
+            "date": "01-01-2024",
+            "note": "2 cartons",
+            "amount": 10.99,
+            "name": "milk",
+            "category": "Food & Grocery"
         }
     ],
     "all earnings list": [

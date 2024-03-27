@@ -228,26 +228,11 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
     // EFFECT: opens appropriate windows based on the button clicked : earning/expense/quit
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == earningButton) {
-            EarningPopUpWindow epuw = new EarningPopUpWindow();
-            ArrayList<String> values = epuw.returnValues();
-            double input1 = Double.parseDouble(values.get(0));
-            Earning earning = new Earning(input1, values.get(1), values.get(2), values.get(3));
-            acc.addEarning(earning);
-
+            new EarningPopUpWindow(this);
         } else if (e.getSource() == expenseButton) {
             new ExpensePopUpWindow(this);
-//            ArrayList<String> values = epuw.returnValues();
-//            // -----------testing-------- \\
-//            for (String v : values) {
-//                System.out.println(v);
-//            }
-//            // -----------testing-------- \\
-//            double input1 = Double.parseDouble(values.get(0));
-//            Expense expense = new Expense(input1, values.get(1), values.get(2), values.get(3), values.get(4));
-//            acc.addExpense(expense);
-
         } else if (e.getSource() == quitButton) {
-            new SavePopUpWindow();
+            new SavePopUpWindow(this);
             dispose();
         }
     }
@@ -264,5 +249,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         return this.acc;
     }
 
-
+    public JsonWriter getJsonWriter() {
+        return this.jsonWriter;
+    }
 }
