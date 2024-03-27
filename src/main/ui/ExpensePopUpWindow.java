@@ -22,6 +22,7 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
     private JTextField date = new JTextField();
     private ArrayList<String> categoryNames = new ArrayList<>(Arrays.asList("Food & Grocery", "Bills & Utilities",
             "Clothing", "Entertainment & Leisure", "Other"));
+    ArrayList<JTextField> inputs = new ArrayList<>(Arrays.asList(amount, name, note, date));
     private JRadioButton food = new JRadioButton("Food & Grocery");
     private JRadioButton bills = new JRadioButton("Bills & Utilities");
     private JRadioButton clothing = new JRadioButton("Clothing");
@@ -37,6 +38,12 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
         this.setSize(600, 300);
         this.getContentPane().setBackground(new Color(18, 18, 18));
         this.setLocationRelativeTo(null);
+
+        for (JTextField input : inputs) {
+            input.setBackground(Color.darkGray);
+            input.setForeground(Color.white);
+            input.setCaretColor(Color.lightGray);
+        }
 
         cancel = new JButton("Cancel");
         submit = new JButton("Submit Expense");
@@ -56,7 +63,6 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
 
         ArrayList<String> names = new ArrayList<>(Arrays.asList("amount ($): ", "name: ", "note (optional): ",
                 "date (MM-DD-YYYY): "));
-        ArrayList<JTextField> inputs = new ArrayList<>(Arrays.asList(amount, name, note, date));
 
         for (int i = 0; i < 4; i++) {
             JLabel text = new JLabel();

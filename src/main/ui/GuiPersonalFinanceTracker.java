@@ -2,6 +2,7 @@ package ui;
 
 import model.Account;
 import model.Earning;
+import model.Expense;
 import model.ItemToBeLogged;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -75,6 +76,16 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         add(container, BorderLayout.EAST); // right of screen
 //        add(createCenter(), BorderLayout.NORTH);
     }
+
+//    private Component createCenter() {
+//        ArrayList<Earning> allEarnings = acc.getAllEarningsList();
+//        ArrayList<Expense> allExpenses = acc.getAllExpensesList();
+//
+//        JPanel earningPanel = new JPanel();
+//        for (Earning e : allEarnings) {
+//
+//        }
+//    }
 
 
     private Component quitButton() {

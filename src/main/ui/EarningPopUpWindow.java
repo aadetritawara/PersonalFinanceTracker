@@ -19,6 +19,8 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
     private JTextField note = new JTextField();
     private JTextField date = new JTextField();
     private JTextField amount = new JTextField();
+    ArrayList<JTextField> inputs = new ArrayList<>(Arrays.asList(amount, name, note, date));
+
 
     public EarningPopUpWindow(GuiPersonalFinanceTracker guiPersonalFinanceTracker) {
         this.parentClass = guiPersonalFinanceTracker;
@@ -35,6 +37,12 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
 
         this.setLayout(new GridLayout(6, 2));
 
+        for (JTextField input : inputs) {
+            input.setBackground(Color.darkGray);
+            input.setForeground(Color.white);
+            input.setCaretColor(Color.lightGray);
+        }
+
         formatFrame();
 
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -47,7 +55,6 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
 
         ArrayList<String> names = new ArrayList<>(Arrays.asList("amount ($): ", "name: ", "note (optional): ",
                 "date (MM-DD-YYYY): "));
-        ArrayList<JTextField> inputs = new ArrayList<>(Arrays.asList(amount, name, note, date));
 
         for (int i = 0; i < 4; i++) {
             JLabel text = new JLabel();
