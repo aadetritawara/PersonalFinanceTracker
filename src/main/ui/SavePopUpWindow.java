@@ -15,20 +15,21 @@ public class SavePopUpWindow extends JFrame implements ActionListener {
     public SavePopUpWindow(GuiPersonalFinanceTracker guiPersonalFinanceTracker) {
         this.parentClass = guiPersonalFinanceTracker;
 
-
         this.setTitle("Quit Options");
         this.setResizable(false);
-        this.setSize(600, 300);
+        this.setSize(450, 200);
         this.getContentPane().setBackground(new Color(18, 18, 18));
         this.setLocationRelativeTo(null);
 
         yes.addActionListener(this);
         no.addActionListener(this);
         JPanel container = new JPanel();
+        container.setBackground(new Color(18, 18, 18));
         container.add(yes);
         container.add(no);
 
-        JLabel question = new JLabel("Do you want to save your data to file?");
+        JLabel question = new JLabel("Do you want to save your data to file?", SwingConstants.CENTER);
+        question.setForeground(new Color(211, 211, 211));
         add(question, BorderLayout.CENTER);
         add(container, BorderLayout.SOUTH);
 
