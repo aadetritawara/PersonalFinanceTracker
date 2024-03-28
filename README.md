@@ -29,6 +29,16 @@ ___
 - As a user, when I start the application, I want to be given the option to load my personal finance tracker from file.
 
 ---
+Instructions for Grader:
+---
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking on either the "Add New Expense" or "Add New Earning" button.
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by observing the changes made to the account "Y" balance when logging multiple items "X". You can click either the "Add New Expense" or the "Add New Earning" button to see the *change in the balance* (top left corner).
+- You can locate my visual component by looking at the top right hand side labelled "Spending By Category". It has image icons of each of my five categories.
+- You can save the state of my application by clicking on the Quit button then the "Yes" button in the window that pops up.
+- You can reload the state of my application by selecting the "Yes" button in the first pop-up window that appears upon opening the application.
+
+---
 Resources Used:
 ---
 - How to get and validate format of user input: https://www.youtube.com/watch?v=bI7kQq9cjmQ
@@ -36,3 +46,5 @@ Resources Used:
 - How to format console output into columns: https://stackoverflow.com/questions/26576909/how-to-format-string-output-so-that-columns-are-evenly-centered
 - Understanding how writing to a JSON file works: https://www.youtube.com/watch?v=-qEpxIARKxE
 - How to use Swing Graphics: https://www.youtube.com/watch?v=Kmgo00avvEw&t=1466s
+
+
