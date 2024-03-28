@@ -6,10 +6,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Set;
 
+// This class represents an account to which expenses and earnings may be added.
 public class Account {
-    // This class represents an account to which expenses and earnings may be added.
 
     private HashMap<String, Category> expensesByCategory;
     private ArrayList<Expense> allExpensesList;

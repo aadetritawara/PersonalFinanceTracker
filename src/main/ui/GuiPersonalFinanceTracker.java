@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
+// this class represents the graphical user interface for the personal finance tracker application
 public class GuiPersonalFinanceTracker extends JFrame implements ActionListener {
 
     // creates and rescales an image icon for earning
@@ -42,6 +42,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
 
 
     // EFFECT: creates a graphical interface for the personal finance tracker application
+    // if the inputted boolean is true, the data from the file is loaded, otherwise present an empty tracker
     public GuiPersonalFinanceTracker(Boolean b) {
 
         jsonReader = new JsonReader("./data/FinanceTracker.json");
@@ -81,6 +82,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         add(container, BorderLayout.EAST); // right of screen
     }
 
+    // EFFECT: returns a component needed to be placed in the center of the application's graphical user interface
     private Component createCenter() {
 
         JPanel container = new JPanel(new BorderLayout());
@@ -111,6 +113,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         return container;
     }
 
+    // EFFECTS: helper function for createCenter() that creates the first earnings table
     private Component returnFirstTable() {
         ArrayList<ItemToBeLogged> earningList = new ArrayList<>();
 
@@ -127,12 +130,10 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         js1.setViewportView(tableEarning);
         js1.getViewport().setBackground(tableEarning.getBackground());
 
-        JPanel container = new JPanel();
-        container.setBackground(new Color(18,18,18));
-
-        return container.add(js1);
+        return js1;
     }
 
+    // EFFECTS: helper function for createCenter() that creates the second expense table
     private Component returnSecondTable() {
         ArrayList<ItemToBeLogged> expensesList = new ArrayList<>();
 
@@ -152,6 +153,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         return js2;
     }
 
+    // EFFECTS: formats quit button and sets it up as an action listener object
     private Component quitButton() {
         JPanel container = new JPanel();
         container.setBackground(new Color(18, 18, 18));
@@ -177,6 +179,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         return container;
     }
 
+    // EFFECTS: helper function for setNorth() that creates the spending by category visual
     private Component rightContainer() {
         rightContainer = new JPanel();
         rightContainer.setBackground(new Color(18, 18, 18));
@@ -209,8 +212,8 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         return categoryNames;
     }
 
-    // EFFECTS: creates the row of the north region. Each column has a category icon and the total spending
-    // in that category
+    // EFFECTS: creates the second row of the north region. Each column has a category icon and the total spending
+    // in that category. There are five columns, one for each category of expenses.
     private Component secondRow() {
         JPanel container = new JPanel();
         container.setBackground(new Color(18, 18, 18));
@@ -306,6 +309,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
     }
 
     @Override
+    // MODIFIES: this
     // EFFECT: opens appropriate windows based on the button clicked : earning/expense/quit
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == earningButton) {
@@ -318,6 +322,7 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: reads data already in the file while updating all necessary features of the GUI
     // (balance, spending by category, & JTable listing earnings/expenses)
     public void load() {
@@ -326,6 +331,15 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         } catch (IOException e) {
             System.out.println("Unable to read from file");
         }
+    }
+
+    // MODIFIES: this
+    // EFFECT: updates the graphical user interface according to changes made in the accounts class from pop-up windows
+    public void update(ItemToBeLogged item) {
+        rightContainer = null;
+        icons.clear();
+        initializeGuiComponents();
+        this.setVisible(true);
     }
 
     public Account getAccount() {
@@ -344,11 +358,4 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         return expenseModel;
     }
 
-    public void update(ItemToBeLogged item) {
-
-        rightContainer = null;
-        icons.clear();
-        initializeGuiComponents();
-        this.setVisible(true);
-    }
 }

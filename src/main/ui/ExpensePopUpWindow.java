@@ -7,10 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+// This class represents a pop-up window that appears upon the click of the "Add new expense" button
+// It prompts the user to input data related their expense, and adds it to the account.
 public class ExpensePopUpWindow extends JFrame implements ActionListener {
 
     private GuiPersonalFinanceTracker parentClass;
@@ -58,7 +59,7 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-    // EFFECT: adds text and input gui to get user input
+    // EFFECT: adds text and input gui to frame in order to get user input
     private void formatFrame() {
 
         ArrayList<String> names = new ArrayList<>(Arrays.asList("amount ($): ", "name: ", "note (optional): ",
@@ -90,8 +91,10 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
     }
 
     @Override
+    // MODIFIES: this
     // EFFECT: Gets the values entered upon click of submit button
-    // Puts the obtained values into an array called returningValues
+    // Adds the submitted expense to the account
+    // updates gui and expense table with a new row
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == submit) {
@@ -106,7 +109,6 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
                     input5 = categoryNames.get(i);
                 }
             }
-
             Expense expense = new Expense(input1, input2, input3, input4, input5);
             ItemToBeLogged itemExpense = expense;
             parentClass.getAccount().addExpense(expense);

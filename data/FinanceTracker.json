@@ -1,15 +1,39 @@
 {
-    "all expenses list": [{
-        "date": "01-01-2024",
-        "note": "asdf sdf  sdf ",
-        "amount": 800,
-        "name": "lksdjfl;",
-        "category": "Entertainment & Leisure"
-    }],
-    "all earnings list": [{
-        "date": "01-01-2024",
-        "note": "sdkljf",
-        "amount": 100,
-        "name": "asldkf"
-    }]
+    "all expenses list": [
+        {
+            "date": "09-09-2024",
+            "note": "asdf",
+            "amount": 90,
+            "name": "asdf",
+            "category": "Food & Grocery"
+        },
+        {
+            "date": "09-08-2024",
+            "note": "asdf asd f",
+            "amount": 80,
+            "name": "asdf",
+            "category": "Entertainment & Leisure"
+        },
+        {
+            "date": "09-01-2024",
+            "note": "lskjdf lsdjf ",
+            "amount": 80,
+            "name": "sl;kdj",
+            "category": "Clothing"
+        }
+    ],
+    "all earnings list": [
+        {
+            "date": "01-01-2024",
+            "note": "sdf",
+            "amount": 2000,
+            "name": "asd"
+        },
+        {
+            "date": "01-01-2024",
+            "note": "sdf",
+            "amount": 800,
+            "name": "sdf"
+        }
+    ]
 }

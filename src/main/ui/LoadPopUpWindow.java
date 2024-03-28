@@ -5,13 +5,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// This class is a pop-up window that redirects the user to the graphical user interface for the application.
+// If the user wants to load their data from the file, it will be reflected in redirected page.
 public class LoadPopUpWindow extends JFrame implements ActionListener {
 
     JFrame frame = new JFrame();
     JButton load = new JButton("Yes");
     JButton doNotLoad = new JButton("No");
 
-    // EFFECT: pop up window asks user if they want to load previous session data
+    // EFFECT: pop up window asks user if they want to load previous session data with use of buttons
     public LoadPopUpWindow() {
         frame.setSize(450,200);
         frame.setLocationRelativeTo(null);
@@ -43,6 +45,9 @@ public class LoadPopUpWindow extends JFrame implements ActionListener {
 
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: if user chooses yes, close current frame and open gui frame with data loaded
+    // if user chooses no, close current frame and open gui frame without data loaded
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == load) {

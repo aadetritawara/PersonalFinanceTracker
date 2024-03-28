@@ -6,12 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 
+// This class represents a pop-up window opened when the user selects "quit" from the application.
+// It asks the user if they want to save the current state of the application to the file.
 public class SavePopUpWindow extends JFrame implements ActionListener {
 
     private GuiPersonalFinanceTracker parentClass;
     private JButton yes = new JButton("yes");
     private JButton no = new JButton("no");
 
+    // EFFECT: creates a pop-up window asking user if they want to save to file, with button options to select from
     public SavePopUpWindow(GuiPersonalFinanceTracker guiPersonalFinanceTracker) {
         this.parentClass = guiPersonalFinanceTracker;
 
@@ -38,6 +41,9 @@ public class SavePopUpWindow extends JFrame implements ActionListener {
     }
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: if user wants to save to file, write to the Json file and dispose of current window
+    // if user does not want to save to file, dispose of current file
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == yes) {
             try {

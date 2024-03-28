@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+// This class is a pop-up window that appears when the user clicks the "Add new earning" button
+// It prompts the user to input data related their earning, and adds it to the account.
 public class EarningPopUpWindow extends JFrame implements ActionListener {
 
     private GuiPersonalFinanceTracker parentClass;
@@ -21,7 +23,7 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
     private JTextField amount = new JTextField();
     ArrayList<JTextField> inputs = new ArrayList<>(Arrays.asList(amount, name, note, date));
 
-
+    // EFFECT: a pop-up window that prompts the user to input details of the earning.
     public EarningPopUpWindow(GuiPersonalFinanceTracker guiPersonalFinanceTracker) {
         this.parentClass = guiPersonalFinanceTracker;
         this.setTitle("Add New Earning");
@@ -49,6 +51,7 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    // EFFECTS: a helper function of the constructor that adds graphical components to the frame to get user input
     private void formatFrame() {
         JPanel container = new JPanel();
         container.setBackground(new Color(18,18,18));
@@ -71,6 +74,10 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
     }
 
     @Override
+    // MODIFIES: this
+    // EFFECT: Gets the values entered upon click of submit button
+    // Adds the submitted earning to the account
+    // updates gui and earning table with a new row
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == submit) {
             double input1 = Double.parseDouble(amount.getText());
