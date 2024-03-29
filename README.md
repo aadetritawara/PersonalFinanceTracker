@@ -33,7 +33,7 @@ Instructions for Grader:
 ---
 
 - You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking on either the "Add New Expense" or "Add New Earning" button.
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by observing the changes made to the account "Y" balance when logging multiple items "X". You can click either the "Add New Expense" or the "Add New Earning" button to see the *change in the balance* (top left corner).
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by either clicking on the "Filter Expenses" or "Filter Earnings" button to see the filtering of logged items (bottom of screen).
 - You can locate my visual component by looking at the top right hand side labelled "Spending By Category". It has image icons of each of my five categories.
 - You can save the state of my application by clicking on the Quit button then the "Yes" button in the window that pops up.
 - You can reload the state of my application by selecting the "Yes" button in the first pop-up window that appears upon opening the application.

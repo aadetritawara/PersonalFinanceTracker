@@ -33,7 +33,7 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
 
         cancel = new JButton("Cancel");
-        submit = new JButton("Submit Expense");
+        submit = new JButton("Submit Earning");
         submit.addActionListener(this);
         cancel.addActionListener(this);
 

@@ -5,7 +5,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
+import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +36,10 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
     private DecimalFormat df = new DecimalFormat("#0.00");
     private LoggingTableModel model;
     private JTable table;
+    private TableRowSorter<LoggingTableModel> sorter;
+    private JButton expensesFilterButton = new JButton("Filter Expenses");
+    private JButton earningsFilterButton = new JButton("Filter Earnings");
+    private JButton showAllButton = new JButton("Show All Items");
 
 
     // EFFECT: creates a graphical interface for the personal finance tracker application
@@ -98,10 +102,24 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
 
         container.add(returnTable(), BorderLayout.CENTER);
 
-        JLabel blank = new JLabel();
-        blank.setBackground(new Color(18,  18, 18));
-        container.add(blank, BorderLayout.SOUTH);
+        container.add(filteringAction(), BorderLayout.SOUTH);
 
+        return container;
+    }
+
+    // EFFECTS: returns the component that contains all the buttons needed for filtering
+    private Component filteringAction() {
+
+        JPanel container = new JPanel(new GridLayout(1,3));
+        container.setBackground(new Color(18,18,18));
+
+        earningsFilterButton.addActionListener(this);
+        expensesFilterButton.addActionListener(this);
+        showAllButton.addActionListener(this);
+
+        container.add(earningsFilterButton);
+        container.add(expensesFilterButton);
+        container.add(showAllButton);
         return container;
     }
 
@@ -122,6 +140,9 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         JScrollPane js = new JScrollPane();
         model = new LoggingTableModel(itemList);
         table = new JTable(model);
+        sorter = new TableRowSorter<>(model);
+        table.setRowSorter(sorter);
+
         table.setBackground(Color.darkGray);
         table.setForeground(new Color(230,230,250));
         js.setViewportView(table);
@@ -288,6 +309,8 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
     @Override
     // MODIFIES: this
     // EFFECT: opens appropriate windows based on the button clicked : earning/expense/quit
+    // (For implementing filtering activity: I got help from this question:
+    // https://stackoverflow.com/questions/1107911/how-can-i-filter-rows-in-a-jtable)
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == earningButton) {
             new EarningPopUpWindow(this);
@@ -296,6 +319,14 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         } else if (e.getSource() == quitButton) {
             new SavePopUpWindow(this);
             dispose();
+        } else if (e.getSource() == showAllButton) {
+            sorter.setRowFilter(null);
+        } else if (e.getSource() == earningsFilterButton) {
+            RowFilter<LoggingTableModel, Integer> earningsFilter = RowFilter.regexFilter("Earning", 4);
+            sorter.setRowFilter(earningsFilter);
+        } else if (e.getSource() == expensesFilterButton) {
+            RowFilter<LoggingTableModel, Integer> expensesFilter = RowFilter.regexFilter("Expense", 4);
+            sorter.setRowFilter(expensesFilter);
         }
     }
 
