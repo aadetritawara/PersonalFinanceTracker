@@ -31,8 +31,8 @@ ___
 ---
 Instructions for Grader:
 ---
-
-- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking on either the "Add New Expense" or "Add New Earning" button.
+To add an item, click the "Add New Expense" or "Add New Earning" button.
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking column names in the table to reorder the logged items in ascending/descending order.
 - You can generate the second required action related to the user story "adding multiple Xs to a Y" by either clicking on the "Filter Expenses" or "Filter Earnings" button to see the filtering of logged items (bottom of screen).
 - You can locate my visual component by looking at the top right hand side labelled "Spending By Category". It has image icons of each of my five categories.
 - You can save the state of my application by clicking on the Quit button then the "Yes" button in the window that pops up.
