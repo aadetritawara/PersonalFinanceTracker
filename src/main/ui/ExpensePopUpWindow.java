@@ -113,7 +113,7 @@ public class ExpensePopUpWindow extends JFrame implements ActionListener {
             ItemToBeLogged itemExpense = expense;
             parentClass.getAccount().addExpense(expense);
             parentClass.update(expense);
-            parentClass.getExpenseModel().addItem(itemExpense);
+            parentClass.getModel().addItem(itemExpense);
             this.dispose();
         } else if (e.getSource() == cancel) {
             this.dispose();

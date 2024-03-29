@@ -1,9 +1,6 @@
 package ui;
 
-import model.Account;
-import model.Earning;
-import model.Expense;
-import model.ItemToBeLogged;
+import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -37,8 +34,8 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
     private JsonWriter jsonWriter;
     private JPanel rightContainer;
     private DecimalFormat df = new DecimalFormat("#0.00");
-    private LoggingTableModel earningModel;
-    private LoggingTableModel expenseModel;
+    private LoggingTableModel model;
+    private JTable table;
 
 
     // EFFECT: creates a graphical interface for the personal finance tracker application
@@ -87,24 +84,19 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
 
         JPanel container = new JPanel(new BorderLayout());
         container.setBackground(new Color(18, 18,18));
-        JLabel earningTitle = new JLabel("All Logged Earnings", SwingConstants.CENTER);
-        JLabel expenseTitle = new JLabel("All Logged Expenses", SwingConstants.CENTER);
-        earningTitle.setForeground(Color.lightGray);
-        expenseTitle.setForeground(Color.lightGray);
+        JLabel title = new JLabel("All Logged Earnings & Expenses", SwingConstants.CENTER);
+        title.setForeground(Color.lightGray);
+        title.setBackground(new Color(89, 70, 178));
+        title.setOpaque(true);
 
-        JPanel northContainer = new JPanel(new GridLayout(1,2));
-        northContainer.setBackground(new Color(89, 70, 178));
-        northContainer.add(earningTitle);
-        northContainer.add(expenseTitle);
+        JPanel northContainer = new JPanel(new GridLayout(2,1));
+        northContainer.setBackground(new Color(18,18,18));
+        northContainer.add(new JLabel(""));
+        northContainer.add(title);
 
         container.add(northContainer, BorderLayout.NORTH);
 
-        JPanel centerContainer = new JPanel(new GridLayout(1,2));
-        centerContainer.setBorder(new LineBorder(new Color(18,18,18), 15));
-        centerContainer.add(returnFirstTable());
-        centerContainer.add(returnSecondTable());
-
-        container.add(centerContainer, BorderLayout.CENTER);
+        container.add(returnTable(), BorderLayout.CENTER);
 
         JLabel blank = new JLabel();
         blank.setBackground(new Color(18,  18, 18));
@@ -113,44 +105,29 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         return container;
     }
 
-    // EFFECTS: helper function for createCenter() that creates the first earnings table
-    private Component returnFirstTable() {
-        ArrayList<ItemToBeLogged> earningList = new ArrayList<>();
+    // EFFECTS: helper function for createCenter() that creates the table displaying earnings & expenses together
+    private Component returnTable() {
+        ArrayList<ItemToBeLogged> itemList = new ArrayList<>();
 
-        for (Earning earning : acc.getAllEarningsList()) {
-            ItemToBeLogged i = earning;
-            earningList.add(i);
+        for (ItemToBeLogged item : acc.getAllEarningsList()) {
+            ItemToBeLogged i = item;
+            itemList.add(i);
         }
 
-        JScrollPane js1 = new JScrollPane();
-        earningModel = new LoggingTableModel(earningList);
-        JTable tableEarning = new JTable(earningModel);
-        tableEarning.setBackground(Color.darkGray);
-        tableEarning.setForeground(new Color(230,230,250));
-        js1.setViewportView(tableEarning);
-        js1.getViewport().setBackground(tableEarning.getBackground());
-
-        return js1;
-    }
-
-    // EFFECTS: helper function for createCenter() that creates the second expense table
-    private Component returnSecondTable() {
-        ArrayList<ItemToBeLogged> expensesList = new ArrayList<>();
-
-        for (Expense expense : acc.getAllExpensesList()) {
-            ItemToBeLogged i = expense;
-            expensesList.add(i);
+        for (ItemToBeLogged item : acc.getAllExpensesList()) {
+            ItemToBeLogged i = item;
+            itemList.add(i);
         }
 
-        JScrollPane js2 = new JScrollPane();
-        expenseModel = new LoggingTableModel(expensesList);
-        JTable tableExpense = new JTable(expenseModel);
-        tableExpense.setBackground(Color.darkGray);
-        tableExpense.setForeground(new Color(230,230,250));
-        js2.setViewportView(tableExpense);
-        js2.getViewport().setBackground(tableExpense.getBackground());
+        JScrollPane js = new JScrollPane();
+        model = new LoggingTableModel(itemList);
+        table = new JTable(model);
+        table.setBackground(Color.darkGray);
+        table.setForeground(new Color(230,230,250));
+        js.setViewportView(table);
+        js.getViewport().setBackground(table.getBackground());
 
-        return js2;
+        return js;
     }
 
     // EFFECTS: formats quit button and sets it up as an action listener object
@@ -350,12 +327,8 @@ public class GuiPersonalFinanceTracker extends JFrame implements ActionListener 
         return this.jsonWriter;
     }
 
-    public LoggingTableModel getEarningModel() {
-        return earningModel;
-    }
-
-    public LoggingTableModel getExpenseModel() {
-        return expenseModel;
+    public LoggingTableModel getModel() {
+        return model;
     }
 
 }

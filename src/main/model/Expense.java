@@ -25,4 +25,14 @@ public class Expense extends ItemToBeLogged {
         j.put("category", getCategory());
         return j;
     }
+
+    @Override
+    public boolean isExpense() {
+        return true;
+    }
+
+    @Override
+    public boolean isEarning() {
+        return false;
+    }
 }

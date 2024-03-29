@@ -11,6 +11,16 @@ public class Earning extends ItemToBeLogged {
         super(amount, name, note, date);
     }
 
+    @Override
+    public boolean isExpense() {
+        return false;
+    }
+
+    @Override
+    public boolean isEarning() {
+        return true;
+    }
+
     // EFFECTS: turns this into a Json object
     public JSONObject earningToJson() {
         JSONObject j = super.itemToJson();

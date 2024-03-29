@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class LoggingTableModel extends AbstractTableModel {
 
     private ArrayList<ItemToBeLogged> itemsList;
-    private final String[] columnNames = {"Name", "Note", "Date", "Amount"};
+    private final String[] columnNames = {"Name", "Note", "Date", "Amount", "Type"};
 
     // EFFECTS: sets the given array list of items to the field value
     public LoggingTableModel(ArrayList<ItemToBeLogged> itemsList) {
@@ -39,8 +39,14 @@ public class LoggingTableModel extends AbstractTableModel {
             return item.getNote();
         } else if (columnIndex == 2) {
             return item.getDate();
-        } else {
+        } else if (columnIndex == 3) {
             return item.getAmount();
+        } else {
+            if (item.isEarning()) {
+                return "Earning";
+            } else {
+                return "Expense";
+            }
         }
     }
 
@@ -56,4 +62,5 @@ public class LoggingTableModel extends AbstractTableModel {
         this.itemsList.add(item);
         fireTableDataChanged();
     }
+
 }

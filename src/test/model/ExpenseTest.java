@@ -48,4 +48,15 @@ public class ExpenseTest {
     public void testGetDate() {
         assertEquals("2024-02-15", expense.getDate());
     }
+
+
+    @Test
+    public void testIsExpense() {
+        assertEquals(true, expense.isExpense());
+    }
+
+    @Test
+    public void testIsEarning() {
+        assertEquals(false, expense.isEarning());
+    }
 }

@@ -89,7 +89,7 @@ public class EarningPopUpWindow extends JFrame implements ActionListener {
             ItemToBeLogged itemEarning = earning;
             parentClass.getAccount().addEarning(earning);
             parentClass.update(earning);
-            parentClass.getEarningModel().addItem(itemEarning);
+            parentClass.getModel().addItem(itemEarning);
             this.dispose();
         } else if (e.getSource() == cancel) {
             this.dispose();

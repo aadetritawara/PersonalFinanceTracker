@@ -45,4 +45,9 @@ public abstract class ItemToBeLogged {
         return j;
     }
 
+    // EFFECTS: returns true if the item to be logged is an expense otherwise false
+    public abstract boolean isExpense();
+
+    // EFFECTS: returns true if the item to be logged is an earning otherwise false
+    public abstract boolean isEarning();
 }
