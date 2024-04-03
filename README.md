@@ -44,6 +44,11 @@ Phase 4: Task 2
 ![img.png](img.png)
 
 ---
+Phase 4: Task 3
+---
+Looking at my UML diagram, it is evident that there is a lot of coupling present in my application. This will make it difficult to implement new changes into the application in the future. Additionally, my GuiPersonalFinanceTracker class contains code that might be confusing to read and not very cohesive. To fix this issue, if I had more time to work on this project, I would choose more descriptive method names and try to implement the one role design principle so this class has one clear purpose and is not all over the place. Another way I would refactor my code is by making an abstract class for my pop-up windows (SavePopUpWindow, ExpensePopUpWindow, and EarningPopUpWindow) since they all have similarities between them that can potentially be abstracted for clearer and less error-prone code. Some of these similarities include their implements/extends relationships, associations, and their functionality.
+
+---
 Resources Used:
 ---
 - How to get and validate format of user input: https://www.youtube.com/watch?v=bI7kQq9cjmQ
