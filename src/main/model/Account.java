@@ -52,6 +52,7 @@ public class Account {
         allExpensesList.add(expense);
         updateBalance(expense);
         totalExpenses += expense.getAmount();
+        EventLog.getInstance().logEvent(new Event("Expense Added To Account."));
     }
 
 
@@ -61,6 +62,7 @@ public class Account {
         allEarningsList.add(earning);
         totalEarnings += earning.getAmount();
         updateBalance(earning);
+        EventLog.getInstance().logEvent(new Event("Earning Added To Account."));
     }
 
     // MODIFIES: balance
@@ -143,4 +145,5 @@ public class Account {
         }
         return j;
     }
+
 }

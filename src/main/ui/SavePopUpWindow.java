@@ -1,5 +1,8 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -50,12 +53,21 @@ public class SavePopUpWindow extends JFrame implements ActionListener {
                 parentClass.getJsonWriter().open();
                 parentClass.getJsonWriter().write(parentClass.getAccount());
                 parentClass.getJsonWriter().close();
+                printLog(EventLog.getInstance());
                 this.dispose();
             } catch (FileNotFoundException exception) {
                 System.out.println("Unable to write to file: " + "./data/FinanceTracker.json");
             }
         } else if (e.getSource() == no) {
+            printLog(EventLog.getInstance());
             this.dispose();
+        }
+    }
+
+    // prints the events logged into console
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString());
         }
     }
 }

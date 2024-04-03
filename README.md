@@ -39,6 +39,11 @@ To add an item, click the "Add New Expense" or "Add New Earning" button.
 - You can reload the state of my application by selecting the "Yes" button in the first pop-up window that appears upon opening the application.
 
 ---
+Phase 4: Task 2
+---
+![img.png](img.png)
+
+---
 Resources Used:
 ---
 - How to get and validate format of user input: https://www.youtube.com/watch?v=bI7kQq9cjmQ

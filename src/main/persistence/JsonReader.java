@@ -1,9 +1,6 @@
 package persistence;
 
-import model.Category;
-import model.Earning;
-import model.Expense;
-import model.Account;
+import model.*;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -46,6 +43,7 @@ public class JsonReader {
     private Account parseAccount(JSONObject jsonObject) {
         Account acc = new Account();
         addThingies(acc, jsonObject);
+        EventLog.getInstance().logEvent(new Event("Account Information Successfully Loaded."));
         return acc;
     }
 
