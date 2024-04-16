@@ -1,4 +1,15 @@
 {
-    "all expenses list": [],
-    "all earnings list": []
+    "all expenses list": [{
+        "date": "04-01-2024",
+        "note": "first biweekly installment",
+        "amount": 10.99,
+        "name": "gym",
+        "category": "Bills & Utilities"
+    }],
+    "all earnings list": [{
+        "date": "04-01-2024",
+        "note": "april",
+        "amount": 1000,
+        "name": "salary"
+    }]
 }
